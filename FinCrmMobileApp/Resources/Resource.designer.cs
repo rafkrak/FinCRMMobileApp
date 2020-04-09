@@ -2561,6 +2561,9 @@ namespace FinCrmMobileApp
 			// aapt resource value: 0x7f080040
 			public const int enterAlwaysCollapsed = 2131230784;
 			
+			// aapt resource value: 0x7f0800a4
+			public const int error_msg = 2131230884;
+			
 			// aapt resource value: 0x7f080041
 			public const int exitUntilCollapsed = 2131230785;
 			
@@ -2644,9 +2647,6 @@ namespace FinCrmMobileApp
 			
 			// aapt resource value: 0x7f08009d
 			public const int linearLayout1 = 2131230877;
-			
-			// aapt resource value: 0x7f0800a4
-			public const int link_signup = 2131230884;
 			
 			// aapt resource value: 0x7f08001d
 			public const int listMode = 2131230749;
