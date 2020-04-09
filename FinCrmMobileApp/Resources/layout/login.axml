@@ -1,29 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-	<ImageView
-		android:src="@drawable/logo"
-		android:layout_width="match_parent"
-		android:layout_height="79.3dp"
-		android:minWidth="25dp"
-		android:minHeight="25dp"
-		android:id="@+id/imageView1"
-		android:layout_marginRight="46.0dp"
-		android:layout_marginLeft="48.3dp" />
-	<EditText
-		android:inputType="textEmailAddress"
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:fitsSystemWindows="true"
+	android:minWidth="25px"
+	android:minHeight="25px">
+	<LinearLayout
+		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/editText1"
-		android:shadowColor="@color/bright_foreground_disabled_material_dark"
-		android:text="E-mail"
-		android:textColor="@color/material_blue_grey_800"
-		android:textColorHint="@android:color/holo_blue_light"
-		android:layout_marginLeft="10dp"
-		android:layout_marginRight="10dp"
-	/>
-
-
-</LinearLayout>
+		android:paddingTop="56dp"
+		android:paddingLeft="24dp"
+		android:paddingRight="24dp">
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="56dp"
+			android:paddingLeft="24dp"
+			android:paddingRight="24dp"
+			android:id="@+id/linearLayout1">
+			<ImageView
+				android:src="@drawable/logo"
+				android:layout_width="wrap_content"
+				android:layout_height="72dp"
+				android:layout_marginBottom="24dp"
+				android:layout_gravity="center_horizontal"
+				android:id="@+id/imageView1" />
+			<android.support.design.widget.TextInputLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:id="@+id/textInputLayout1">
+				<EditText
+					android:id="@+id/input_email"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:inputType="textEmailAddress"
+					android:hint="Email" />
+			</android.support.design.widget.TextInputLayout>
+			<android.support.design.widget.TextInputLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				android:id="@+id/textInputLayout2">
+				<EditText
+					android:id="@+id/input_password"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:inputType="textPassword"
+					android:hint="Password"/>
+			</android.support.design.widget.TextInputLayout>
+			<android.support.v7.widget.AppCompatButton
+				android:id="@+id/btn_login"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:layout_marginBottom="24dp"
+				android:padding="12dp"
+				android:text="Login"/>
+			<TextView
+				android:id="@+id/link_signup"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="24dp"
+				android:text="No account yet? Create one"
+				android:gravity="center"
+				android:textSize="16dip"/>
+		</LinearLayout>
+		
+	</LinearLayout>
+</ScrollView>
