@@ -75,7 +75,10 @@
 				android:gravity="center"
 				android:textSize="16dip"
 				android:textColor="@android:color/holo_red_light"
-				android:textColorHighlight="@drawable/abc_btn_borderless_material"/>
+				android:textColorHighlight="@drawable/abc_btn_borderless_material"
+				android:visibility="invisible"
+				
+			/>
 
 		</LinearLayout>
 		
