@@ -48,11 +48,11 @@ namespace FinCrmMobileApp
             _loginButton.Click += _loginButton_Click;
         }
 
-        private void _loginButton_Click(object sender, EventArgs e)
+        private async void _loginButton_Click(object sender, EventArgs e)
         {
             _errMsgLabel.Visibility = ViewStates.Invisible;
-           
-            if (! Android.Util.Patterns.EmailAddress.Matcher(_tbEmail.Text).Matches())
+
+            if (!Android.Util.Patterns.EmailAddress.Matcher(_tbEmail.Text).Matches())
             {
                 _errMsgLabel.Text = "Wprowadź email w prwidłowym formacie";
                 _errMsgLabel.Visibility = ViewStates.Visible;
@@ -66,10 +66,10 @@ namespace FinCrmMobileApp
                 return;
             }
 
-            APICommunication api = new APICommunication();
-            var isLoginSucces = api.LoginProcess(_tbEmail.Text, _tbPass.Text);
+            LoginAPI api = new LoginAPI();
+            string isLoginSucces = await api.LoginProcess(_tbEmail.Text, _tbPass.Text);
 
-            if (isLoginSucces == "NOT")
+            if (isLoginSucces.ToString() == "NOT")
             {
                 _errMsgLabel.Text = "Błąd logowania";
                 _errMsgLabel.Visibility = ViewStates.Visible;
@@ -78,7 +78,7 @@ namespace FinCrmMobileApp
 
             else
             {
-                _errMsgLabel.Text = "Zalogowanie prawidłowe";
+                _errMsgLabel.Text = "Zalogowanie prawidłowe jwt:" + isLoginSucces;
                 _errMsgLabel.Visibility = ViewStates.Visible;
                 
                 return;
