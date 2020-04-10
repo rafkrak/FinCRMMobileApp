@@ -10,8 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using FinCrmAPICommunication;
-
-
+using Xamarin.Essentials;
 
 namespace FinCrmMobileApp
 {
@@ -52,19 +51,19 @@ namespace FinCrmMobileApp
         {
             _errMsgLabel.Visibility = ViewStates.Invisible;
 
-            if (!Android.Util.Patterns.EmailAddress.Matcher(_tbEmail.Text).Matches())
-            {
-                _errMsgLabel.Text = "Wprowadź email w prwidłowym formacie";
-                _errMsgLabel.Visibility = ViewStates.Visible;
-                return;
-            }
+            //if (!Android.Util.Patterns.EmailAddress.Matcher(_tbEmail.Text).Matches())
+            //{
+            //    _errMsgLabel.Text = "Wprowadź email w prwidłowym formacie";
+            //    _errMsgLabel.Visibility = ViewStates.Visible;
+            //    return;
+            //}
 
-            if (_tbPass.Text.Length < 3)
-            {
-                _errMsgLabel.Text = "Podaj hasło";
-                _errMsgLabel.Visibility = ViewStates.Visible;
-                return;
-            }
+            //if (_tbPass.Text.Length < 3)
+            //{
+            //    _errMsgLabel.Text = "Podaj hasło";
+            //    _errMsgLabel.Visibility = ViewStates.Visible;
+            //    return;
+            //}
 
             LoginAPI api = new LoginAPI();
             string isLoginSucces = await api.LoginProcess(_tbEmail.Text, _tbPass.Text);
@@ -78,10 +77,15 @@ namespace FinCrmMobileApp
 
             else
             {
-                _errMsgLabel.Text = "Zalogowanie prawidłowe jwt:" + isLoginSucces;
+                _errMsgLabel.Text = "Zalogowanie prawidłowe" ;
                 _errMsgLabel.Visibility = ViewStates.Visible;
                 
-                return;
+             //ZAPIS JWT TOKENA  
+             await SecureStorage.SetAsync("oauth_token", isLoginSucces);
+                //ODCZYT JWT
+                _errMsgLabel.Text = _errMsgLabel.Text +  await SecureStorage.GetAsync("oauth_token");
+
+
             }
         }
 
