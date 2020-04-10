@@ -9,12 +9,17 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using FinCrmAPICommunication;
+
+
 
 namespace FinCrmMobileApp
 {
     [Activity(Label = "Login", MainLauncher = true)]
     public class Login : Activity
     {
+
+       
         private Button _loginButton;
         private TextView _errMsgLabel;
         private EditText _tbEmail;
@@ -46,9 +51,10 @@ namespace FinCrmMobileApp
         private void _loginButton_Click(object sender, EventArgs e)
         {
             _errMsgLabel.Visibility = ViewStates.Invisible;
-            if (_tbEmail.Text.Length < 3 )
+           
+            if (! Android.Util.Patterns.EmailAddress.Matcher(_tbEmail.Text).Matches())
             {
-                _errMsgLabel.Text = "Najpierw wprowadź email";
+                _errMsgLabel.Text = "Wprowadź email w prwidłowym formacie";
                 _errMsgLabel.Visibility = ViewStates.Visible;
                 return;
             }
@@ -60,7 +66,29 @@ namespace FinCrmMobileApp
                 return;
             }
 
+            APICommunication api = new APICommunication();
+            var isLoginSucces = api.LoginProcess(_tbEmail.Text, _tbPass.Text);
 
+            if (isLoginSucces == "NOT")
+            {
+                _errMsgLabel.Text = "Błąd logowania";
+                _errMsgLabel.Visibility = ViewStates.Visible;
+                return;
+            }
+
+            else
+            {
+                _errMsgLabel.Text = "Zalogowanie prawidłowe";
+                _errMsgLabel.Visibility = ViewStates.Visible;
+                
+                return;
+            }
         }
+
+
+
+
+
+        
     }
 }

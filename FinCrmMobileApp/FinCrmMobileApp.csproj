@@ -124,6 +124,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FinCrmAPICommunication\FinCrmAPICommunication.csproj">
+      <Project>{aa268a56-ed0b-475f-8213-8481bf023649}</Project>
+      <Name>FinCrmAPICommunication</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
