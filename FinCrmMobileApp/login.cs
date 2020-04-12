@@ -83,7 +83,9 @@ namespace FinCrmMobileApp
              //ZAPIS JWT TOKENA  
              await SecureStorage.SetAsync("oauth_token", isLoginSucces);
                 //ODCZYT JWT
-                _errMsgLabel.Text = _errMsgLabel.Text +  await SecureStorage.GetAsync("oauth_token");
+                //_errMsgLabel.Text = _errMsgLabel.Text +  await SecureStorage.GetAsync("oauth_token");
+                Intent intent = new Intent(this, typeof(MainActivity));
+                StartActivity(intent);
 
 
             }
